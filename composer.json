@@ -1,0 +1,37 @@
+{
+  "name": "angelov/phpunit-php-vcr",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "test": "./vendor/bin/phpunit",
+    "cs": "./vendor/bin/php-cs-fixer fix --verbose --diff --dry-run",
+    "cs-fix": "./vendor/bin/php-cs-fixer fix --verbose --diff",
+    "phpstan": "php -d memory_limit=-1 vendor/bin/phpstan analyse -c phpstan.neon --no-progress -vvv",
+    "ec": "./vendor/bin/ec"
+  },
+  "authors": [
+    {
+      "name": "Dejan Angelov",
+      "homepage": "https://angelovdejan.me"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "php-vcr/php-vcr": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "squizlabs/php_codesniffer": "^3.7",
+    "phpstan/phpstan": "^1.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Angelov\\PHPUnitPHPVcr\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Angelov\\PHPUnitPHPVcr\\Tests\\": "tests/"
+    }
+  }
+}

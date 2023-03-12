@@ -1,0 +1,48 @@
+-
+    request:
+        method: GET
+        url: 'https://example.com'
+        headers:
+            Host: example.com
+    response:
+        status:
+            code: 200
+            message: ''
+        headers:
+            age: '455285'
+            cache-control: max-age=604800
+            content-type: 'text/html; charset=UTF-8'
+            date: 'Sun, 12 Mar 2023 10:20:46 GMT'
+            etag: '"3147526947+ident"'
+            expires: 'Sun, 19 Mar 2023 10:20:46 GMT'
+            last-modified: 'Thu, 17 Oct 2019 07:18:26 GMT'
+            server: 'ECS (dcb/7EA3)'
+            vary: Accept-Encoding
+            x-cache: HIT
+            content-length: '1256'
+        body: "Example body for \"https://example.com\""
+    index: 0
+-
+    request:
+        method: GET
+        url: 'https://example.org'
+        headers:
+            Host: example.org
+    response:
+        status:
+            code: 200
+            message: ''
+        headers:
+            age: '491959'
+            cache-control: max-age=604800
+            content-type: 'text/html; charset=UTF-8'
+            date: 'Sun, 12 Mar 2023 10:20:47 GMT'
+            etag: '"3147526947+ident"'
+            expires: 'Sun, 19 Mar 2023 10:20:47 GMT'
+            last-modified: 'Thu, 17 Oct 2019 07:18:26 GMT'
+            server: 'ECS (dcb/7EA2)'
+            vary: Accept-Encoding
+            x-cache: HIT
+            content-length: '1256'
+        body: "Example body for \"https://example.org\""
+    index: 0
