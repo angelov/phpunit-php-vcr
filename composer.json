@@ -1,6 +1,7 @@
 {
   "name": "angelov/phpunit-php-vcr",
   "description": "A library that allows you to easily use the PHP-VCR library in your PHPUnit tests.",
+  "keywords": ["phpunit", "php-vcr", "tests", "testing", "vcr", "unit"],
   "license": "MIT",
   "authors": [
     {
