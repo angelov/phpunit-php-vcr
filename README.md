@@ -61,7 +61,7 @@ responses in the given cassette.
     ```
 
 * When declared on a test method, only requests in that methods will be intercepted and stored in the given cassette. 
-Note that it can applied on multiple test methods with different cassettes.
+Note that it can be declared on multiple test methods with different cassettes.
 
     ```php
     use Angelov\PHPUnitPHPVcr\UseCassette;
@@ -76,6 +76,27 @@ Note that it can applied on multiple test methods with different cassettes.
 
         #[Test]
         public function another(): void { ... }
+
+        #[Test]
+        #[UseCassette("example_2.yml")]
+        public function recorded(): void { ... }
+    }
+    ```
+
+* When declared both on the class and on a specific method, the name from the attribute declared on the method will be 
+used for that method. In this example, the responses from the requests made in the `example()` method will be stored in 
+`example.yml` and the ones from `recorded()` in `example_2.yml`.
+
+    ```php
+    use Angelov\PHPUnitPHPVcr\UseCassette;
+    use PHPUnit\Framework\Attributes\Test;
+    use PHPUnit\Framework\TestCase;
+
+    #[UseCassette("example.yml")]
+    class ExampleTest extends TestCase
+    {
+        #[Test]
+        public function example(): void { ... }
 
         #[Test]
         #[UseCassette("example_2.yml")]
