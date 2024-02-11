@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": "^8.1",
+    "php": "^8.2",
     "php-vcr/php-vcr": "^1.0"
   },
   "require-dev": {
