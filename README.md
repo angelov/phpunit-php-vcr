@@ -4,7 +4,7 @@ A library that allows you to easily use the PHP-VCR library in your PHPUnit test
 
 ## Requirements
 
-* PHP 8.1+
+* PHP 8.2+
 * PHPUnit 10+
 
 ## Installation
