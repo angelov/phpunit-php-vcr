@@ -52,7 +52,7 @@ class Extension implements PHPUnit\Extension
 
         return array_map(
             fn(string $value): string => trim($value),
-            explode($value, ",")
+            explode(",", $value)
         );
     }
 }
