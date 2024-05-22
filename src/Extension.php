@@ -50,12 +50,9 @@ class Extension implements PHPUnit\Extension
             return null;
         }
 
-        $data = [];
-        foreach(explode(',', $value) as $item)
-        {
-            $data[] = trim($item);
-        }
-
-        return $data;
+        return array_map(
+            fn(string $value): string => trim($value),
+            explode(",", $value)
+        );
     }
 }
