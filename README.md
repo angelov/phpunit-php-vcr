@@ -1,5 +1,11 @@
 # PHP-VCR integration for PHPUnit
 
+[![Build status](https://github.com/angelov/phpunit-php-vcr/actions/workflows/default.yaml/badge.svg?branch=main)](https://github.com/angelov/phpunit-php-vcr/actions/workflows/default.yaml)
+[![Downloads](https://poser.pugx.org/angelov/phpunit-php-vcr/downloads)](https://packagist.org/packages/angelov/phpunit-php-vcr)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/angelov/phpunit-php-vcr)](https://packagist.org/packages/angelov/phpunit-php-vcr)
+[![GitHub stars](https://img.shields.io/github/stars/angelov/phpunit-php-vcr)](https://packagist.org/packages/angelov/phpunit-php-vcr)
+[![GitHub license](https://img.shields.io/github/license/angelov/phpunit-php-vcr)](https://github.com/angelov/phpunit-php-vcr/blob/main/LICENSE)
+
 A library that allows you to easily use the PHP-VCR library in your PHPUnit tests.
 
 ## Requirements
