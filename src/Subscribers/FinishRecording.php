@@ -14,7 +14,7 @@ class FinishRecording implements FinishedSubscriber
 
     public function notify(Finished $event): void
     {
-        $test = $event->test()->name();
+        $test = $event->test()->id();
 
         if (!$this->needsRecording($test)) {
             return;
