@@ -34,11 +34,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
-      - name: Install PHPUnit
-        run: composer require --dev phpunit/phpunit:${{ matrix.phpunit-versions }}
-
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
+
+      - name: Install PHPUnit
+        run: composer require --dev --with-all-dependencies phpunit/phpunit:${{ matrix.phpunit-versions }}
 
       - name: Print PHP version
         run: php -v
