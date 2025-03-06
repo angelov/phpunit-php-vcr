@@ -52,4 +52,4 @@ jobs:
         run: vendor/bin/phpstan analyse
 
       - name: Execute PHPUnit tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --no-cache-result
