@@ -13,7 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions: ['8.2', '8.3']
+        php-versions: ['8.2', '8.3', '8.4']
+        dependency-versions: ['lowest', 'highest']
 
     steps:
       - uses: actions/checkout@v3
@@ -33,8 +34,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v2
+        with:
+          dependency-versions: ${{ matrix.dependency-versions }}
+
+      - name: Print PHP version
+        run: php -v
+
+      - name: Print PHPUnit version
+        run: vendor/bin/phpunit --version
 
       - name: Check coding standard
         run: vendor/bin/phpcs -p
