@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of Angelov phpunit-vcr.
+ *
+ * (c) Angelov <https://angelovdejan.me>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace Angelov\PHPUnitPHPVcr;
 
 use Angelov\PHPUnitPHPVcr\Subscribers\ConfigureRecorder;
@@ -24,8 +33,8 @@ class Extension implements PHPUnit\Extension
                 $this->parameterAsArray($parameters, 'requestMatchers'),
                 $this->parameterAsArray($parameters, 'whitelistedPaths'),
                 $this->parameterAsArray($parameters, 'blacklistedPaths'),
-                $this->parameter($parameters, 'mode')
-            )
+                $this->parameter($parameters, 'mode'),
+            ),
         );
 
         $facade->registerSubscriber(new StartRecording());
@@ -41,18 +50,20 @@ class Extension implements PHPUnit\Extension
         return null;
     }
 
-    /** @return array<string>|null */
+    /**
+     * @return list<string>|null
+     */
     private function parameterAsArray(ParameterCollection $parameters, string $name): ?array
     {
         $value = $this->parameter($parameters, $name);
 
-        if ($value == null) {
+        if ($value === null) {
             return null;
         }
 
         return array_map(
-            fn(string $value): string => trim($value),
-            explode(",", $value)
+            static fn (string $value): string => trim($value),
+            explode(',', $value),
         );
     }
 }

@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of Angelov phpunit-vcr.
+ *
+ * (c) Angelov <https://angelovdejan.me>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace Angelov\PHPUnitPHPVcr\Tests;
 
 use Angelov\PHPUnitPHPVcr\UseCassette;
@@ -9,30 +18,36 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[UseCassette("on_class.yml")]
-class AttributeDeclaredOnClassTest extends TestCase
+/**
+ * @internal
+ */
+#[UseCassette('on-class.yml')]
+final class AttributeDeclaredOnClassTest extends TestCase
 {
     #[Test]
-    public function it_uses_vcr_on_methods_from_class_with_attribute(): void
+    public function itUsesVcrOnMethodsFromClassWithAttribute(): void
     {
-        $content = file_get_contents("https://example.com");
+        $content = file_get_contents('https://example.com');
 
-        $this->assertSame("Example body for \"https://example.com\"", $content);
+        $this->assertSame('Example body for "https://example.com"', $content);
     }
 
+    #[DataProvider('urls')]
     #[Test]
-    #[DataProvider("urls")]
-    public function it_uses_vcr_on_methods_with_data_provider(string $url): void
+    public function itUsesVcrOnMethodsWithDataProvider(string $url): void
     {
         $content = file_get_contents($url);
 
-        $this->assertSame(sprintf("Example body for \"%s\"", $url), $content);
+        $this->assertSame(sprintf('Example body for "%s"', $url), $content);
     }
 
-    /** @return iterable<list<string>> */
+    /**
+     * @return iterable<list<string>>
+     */
     public static function urls(): iterable
     {
-        yield ["https://example.com"];
-        yield ["https://example.org"];
+        yield ['https://example.com'];
+
+        yield ['https://example.org'];
     }
 }

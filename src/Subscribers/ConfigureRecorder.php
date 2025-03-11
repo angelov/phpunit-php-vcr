@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of Angelov phpunit-vcr.
+ *
+ * (c) Angelov <https://angelovdejan.me>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace Angelov\PHPUnitPHPVcr\Subscribers;
 
 use PHPUnit\Event\TestRunner\ExecutionStarted;
@@ -11,10 +20,10 @@ use VCR\VCR;
 class ConfigureRecorder implements ExecutionStartedSubscriber
 {
     /**
-     * @param array<string>|null $libraryHooks
-     * @param array<string>|null $requestMatchers
-     * @param array<string>|null $whitelistedPaths
-     * @param array<string>|null $blacklistedPaths
+     * @param list<string>|null $libraryHooks
+     * @param list<string>|null $requestMatchers
+     * @param list<string>|null $whitelistedPaths
+     * @param list<string>|null $blacklistedPaths
      */
     public function __construct(
         private readonly ?string $cassettesPath,
@@ -23,7 +32,7 @@ class ConfigureRecorder implements ExecutionStartedSubscriber
         private readonly ?array $requestMatchers,
         private readonly ?array $whitelistedPaths,
         private readonly ?array $blacklistedPaths,
-        private readonly ?string $mode
+        private readonly ?string $mode,
     ) {
     }
 
