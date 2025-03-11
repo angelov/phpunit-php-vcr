@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+    backupGlobals="false"
+    beStrictAboutOutputDuringTests="true"
+    colors="true"
+    columns="max"
+    failOnRisky="true"
+    failOnWarning="true"
+    cacheDirectory="build/.phpunit.cache">
+    <coverage
+		includeUncoveredFiles="true"
+		pathCoverage="false"
+		ignoreDeprecatedCodeUnits="true"
+		disableCodeCoverageIgnore="true">
+		<report>
+			<clover outputFile="build/logs/clover.xml"/>
+			<html outputDirectory="build/coverage/html" highLowerBound="80"/>
+			<text outputFile="build/coverage/coverage.txt"/>
+		</report>
+	</coverage>
+  <testsuites>
+    <testsuite name="default">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <extensions>
+    <bootstrap class="\Angelov\PHPUnitPHPVcr\Extension"/>
+  </extensions>
+  <source>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </source>
+  <logging>
+		<testdoxHtml outputFile="build/logs/testdox.html"/>
+		<testdoxText outputFile="build/logs/testdox.txt"/>
+		<junit outputFile="build/logs/logfile.xml"/>
+		<!--<log type="coverage-clover" target="build/logs/clover.xml"/>-->
+	</logging>
+</phpunit>
