@@ -25,7 +25,7 @@ trait AttributeResolverTrait
         $test = $this->parseMethod($test);
 
         try {
-            $method = new ReflectionMethod($test);
+            $method = ReflectionMethod::createFromMethodName($test);
         } catch (Exception) {
             return null;
         }
@@ -48,7 +48,7 @@ trait AttributeResolverTrait
 
     private function getAttributeFromClass(string $test): ?UseCassette
     {
-        $method = new ReflectionMethod($test);
+        $method = ReflectionMethod::createFromMethodName($test);
         $class = $method->getDeclaringClass();
         $attributes = $class->getAttributes(UseCassette::class);
 
