@@ -28,6 +28,7 @@ trait AttributeResolverTrait
             if (PHP_VERSION_ID < 80300) {
                 $method = new ReflectionMethod($test);
             } else {
+                // @phpstan-ignore-next-line
                 $method = ReflectionMethod::createFromMethodName($test);
             }
         } catch (Exception) {
@@ -55,6 +56,7 @@ trait AttributeResolverTrait
         if (PHP_VERSION_ID < 80300) {
             $method = new ReflectionMethod($test);
         } else {
+            // @phpstan-ignore-next-line
             $method = ReflectionMethod::createFromMethodName($test);
         }
         $class = $method->getDeclaringClass();
