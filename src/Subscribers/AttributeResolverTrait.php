@@ -25,7 +25,12 @@ trait AttributeResolverTrait
         $test = $this->parseMethod($test);
 
         try {
-            $method = new ReflectionMethod($test);
+            if (PHP_VERSION_ID < 80300) {
+                $method = new ReflectionMethod($test);
+            } else {
+                // @phpstan-ignore-next-line
+                $method = ReflectionMethod::createFromMethodName($test);
+            }
         } catch (Exception) {
             return null;
         }
@@ -48,7 +53,12 @@ trait AttributeResolverTrait
 
     private function getAttributeFromClass(string $test): ?UseCassette
     {
-        $method = new ReflectionMethod($test);
+        if (PHP_VERSION_ID < 80300) {
+            $method = new ReflectionMethod($test);
+        } else {
+            // @phpstan-ignore-next-line
+            $method = ReflectionMethod::createFromMethodName($test);
+        }
         $class = $method->getDeclaringClass();
         $attributes = $class->getAttributes(UseCassette::class);
 
