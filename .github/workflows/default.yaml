@@ -14,6 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         php-versions: ['8.2', '8.3', '8.4']
+        dependency-versions: [lowest, highest]
 
     steps:
       - uses: actions/checkout@v3
@@ -26,15 +27,17 @@ jobs:
 
       - name: Cache Composer packages
         id: composer-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-${{ matrix.dependency-version }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v2
+        with:
+          dependency-versions: ${{ matrix.dependency-versions }}
 
       - name: Check coding standard
         run: vendor/bin/phpcs -p
