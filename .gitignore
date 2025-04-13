@@ -2,3 +2,4 @@
 vendor/
 .phpunit.cache
 .phpcs-cache
+composer.lock
