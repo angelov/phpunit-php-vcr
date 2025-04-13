@@ -25,6 +25,7 @@ trait AttributeResolverTrait
         $test = $this->parseMethod($test);
 
         try {
+            // @phpstan-ignore-next-line
             if (method_exists(ReflectionMethod::class, 'createFromMethodName')) {
                 $method = ReflectionMethod::createFromMethodName($test);
             } else {
@@ -52,6 +53,7 @@ trait AttributeResolverTrait
 
     private function getAttributeFromClass(string $test): ?UseCassette
     {
+        // @phpstan-ignore-next-line
         if (method_exists(ReflectionMethod::class, 'createFromMethodName')) {
             $method = ReflectionMethod::createFromMethodName($test);
         } else {
