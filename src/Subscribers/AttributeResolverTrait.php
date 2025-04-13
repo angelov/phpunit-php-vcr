@@ -25,11 +25,10 @@ trait AttributeResolverTrait
         $test = $this->parseMethod($test);
 
         try {
-            if (PHP_VERSION_ID < 80300) {
-                $method = new ReflectionMethod($test);
-            } else {
-                // @phpstan-ignore-next-line
+            if (method_exists(ReflectionMethod::class, 'createFromMethodName')) {
                 $method = ReflectionMethod::createFromMethodName($test);
+            } else {
+                $method = new ReflectionMethod($test);
             }
         } catch (Exception) {
             return null;
@@ -53,12 +52,12 @@ trait AttributeResolverTrait
 
     private function getAttributeFromClass(string $test): ?UseCassette
     {
-        if (PHP_VERSION_ID < 80300) {
-            $method = new ReflectionMethod($test);
-        } else {
-            // @phpstan-ignore-next-line
+        if (method_exists(ReflectionMethod::class, 'createFromMethodName')) {
             $method = ReflectionMethod::createFromMethodName($test);
+        } else {
+            $method = new ReflectionMethod($test);
         }
+
         $class = $method->getDeclaringClass();
         $attributes = $class->getAttributes(UseCassette::class);
 
