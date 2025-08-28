@@ -7,9 +7,12 @@ namespace Angelov\PHPUnitPHPVcr;
 use Attribute;
 
 #[Attribute(Attribute::TARGET_CLASS | Attribute::TARGET_METHOD)]
-class UseCassette
+readonly class UseCassette
 {
-    public function __construct(public readonly string $name)
-    {
+    public function __construct(
+        public string $name,
+        public bool $separateCassettePerCase = false,
+        public bool $groupCaseFilesInDirectory = false
+    ) {
     }
 }

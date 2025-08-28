@@ -1,0 +1,24 @@
+-
+    request:
+        method: GET
+        url: 'https://example.com'
+        headers:
+            Host: example.com
+    response:
+        status:
+            code: 200
+            message: ''
+        headers:
+            age: '454479'
+            cache-control: max-age=604800
+            content-type: 'text/html; charset=UTF-8'
+            date: 'Sun, 12 Mar 2023 10:07:20 GMT'
+            etag: '"3147526947+ident"'
+            expires: 'Sun, 19 Mar 2023 10:07:20 GMT'
+            last-modified: 'Thu, 17 Oct 2019 07:18:26 GMT'
+            server: 'ECS (dcb/7EA3)'
+            vary: Accept-Encoding
+            x-cache: HIT
+            content-length: '1256'
+        body: "Example body."
+    index: 0
