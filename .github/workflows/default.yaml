@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         php: ['8.2', '8.3', '8.4', '8.5']
-        phpunit: ['^10.5', '^11.0', '^12.0']
+        phpunit: ['^10.5', '^11.0', '^12.0', '^13.0']
         dependency-version: ['lowest', 'highest']
         exclude:
           # PHPUnit 10 supports up to PHP 8.3
@@ -29,6 +29,12 @@ jobs:
           # PHPUnit 12 requires PHP >= 8.3
           - php: '8.2'
             phpunit: '^12.0'
+
+          # PHPUnit 13 requires PHP >= 8.4
+          - php: '8.2'
+            phpunit: '^13.0'
+          - php: '8.3'
+            phpunit: '^13.0'
 
     steps:
       - uses: actions/checkout@v4
