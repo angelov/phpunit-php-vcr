@@ -27,5 +27,8 @@
     "psr-4": {
       "Angelov\\PHPUnitPHPVcr\\Tests\\": "tests/"
     }
+  },
+  "conflict": {
+    "symfony/yaml": "<4.4"
   }
 }
